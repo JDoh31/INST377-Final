@@ -4,21 +4,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon Stat Observer</title>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-    <div>
-      <header><h1>The Pokemon Stats Observer</h1></header> 
-      <div>
+    <div class="wrapper">
+      <header class="header">
+        <h1>The Pokemon Stats Observer</h1>
+      </header> 
+      <div class="container">
         <!--Box on the Left-->
-        <div>
+        <div class="left_section box">
             <h3>Choose a Pokemon</h3>
+            <input type="text" id="poke" name="poke"></input>
+            <button type="button" id="poke_search">Get Stats</button>
         </div>
         <!--Box on the Right-->
-        <div>
+        <div class="right_section box">
             <h3>Pokemon Base Stats</h3>
+            <div id="chart" class="box"></div>
             <div>A bar graph distribution of the Pokemon's base stats</div>
         </div>
       </div> 
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
