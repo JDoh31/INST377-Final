@@ -29,7 +29,7 @@ function formChart(statArr) {
 
         $("#example").click(function () {
 
-            chart.options.title.text = "Bulbasuar Base Stats";
+            chart.options.title.text = "Bulbasaur Base Stats";
             chart.options.data[0].dataPoints[0].y = 45;
             chart.options.data[0].dataPoints[1].y = 49;
             chart.options.data[0].dataPoints[2].y = 49;
@@ -58,7 +58,7 @@ async function whoThatPokemon() {
     let search = "";
 
     bulbasaurExample.addEventListener("click", async (event) => {
-        console.log("Bulbasuar Data")
+        console.log("Bulbasaur Data")
         const results = await fetch("https://pokeapi.co/api/v2/pokemon/bulbasaur");
 
         const storedList = await results.json();
