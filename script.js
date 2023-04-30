@@ -1,3 +1,9 @@
+function findThatPokemon(pokemon) {
+    pokeName = pokemon.toLowerCase();
+    getFrom = "https://pokeapi.co/api/v2/pokemon/" + pokeName;
+    return getFrom;
+}
+
 function formChart(statArr) {
     window.onload = function () {
         var chart = new CanvasJS.Chart("chart", {
@@ -34,19 +40,10 @@ function formChart(statArr) {
         
             });
 
-        $("#poke_search").click(function () {
-
-            chart.options.data[0].dataPoints[0].y = statArr["stats"][0]["base_stat"];
-            chart.options.data[0].dataPoints[1].y = statArr["stats"][1]["base_stat"];
-            chart.options.data[0].dataPoints[2].y = statArr["stats"][2]["base_stat"];
-            chart.options.data[0].dataPoints[3].y = statArr["stats"][3]["base_stat"];
-            chart.options.data[0].dataPoints[4].y = statArr["stats"][4]["base_stat"];
-            chart.options.data[0].dataPoints[5].y = statArr["stats"][5]["base_stat"];
-            chart.render();
-        });
     
     }
 }
+
 
 async function whoThatPokemon() {
     const bulbasaurExample = document.querySelector('#example')
@@ -58,6 +55,7 @@ async function whoThatPokemon() {
 
     initChart = formChart()
 
+    let search = "";
 
     bulbasaurExample.addEventListener("click", async (event) => {
         console.log("Bulbasuar Data")
@@ -67,8 +65,26 @@ async function whoThatPokemon() {
         localStorage.setItem('storedData', JSON.stringify(storedList));
         parsedData = storedList;
 
-        bulbStats = parsedData["stats"][0]["base_stat"]
+        bulbStats = parsedData["stats"]
         console.log(bulbStats)
+    });
+
+    pokemon.addEventListener("input", async (event) => {
+        console.log("input",event.target.value)
+        pocketMonsterLink = findThatPokemon(event.target.value);
+        search = pocketMonsterLink;
+    });
+
+    getStatsButton.addEventListener("click", async (event) => {
+        console.log("Getting Stats")
+        const results = await fetch(search);
+
+        const storedList = await results.json();
+        localStorage.setItem('storedData', JSON.stringify(storedList));
+        parsedData = storedList;
+
+        stats = parsedData
+        console.log(stats)
     });
 
 
