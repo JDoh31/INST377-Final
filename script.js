@@ -6,7 +6,6 @@ function formChart(statArr) {
             },
             data: [              
             {
-                // Change type to "doughnut", "line", "splineArea", etc.
                 type: "column",
                 dataPoints: [
                     {label: "HP", y: 0  },
@@ -34,6 +33,17 @@ function formChart(statArr) {
             chart.render();
         
             });
+
+        $("#poke_search").click(function () {
+
+            chart.options.data[0].dataPoints[0].y = statArr["stats"][0]["base_stat"];
+            chart.options.data[0].dataPoints[1].y = statArr["stats"][1]["base_stat"];
+            chart.options.data[0].dataPoints[2].y = statArr["stats"][2]["base_stat"];
+            chart.options.data[0].dataPoints[3].y = statArr["stats"][3]["base_stat"];
+            chart.options.data[0].dataPoints[4].y = statArr["stats"][4]["base_stat"];
+            chart.options.data[0].dataPoints[5].y = statArr["stats"][5]["base_stat"];
+            chart.render();
+        });
     
     }
 }
@@ -57,9 +67,11 @@ async function whoThatPokemon() {
         localStorage.setItem('storedData', JSON.stringify(storedList));
         parsedData = storedList;
 
-        bulbStats = parsedData["stats"]
+        bulbStats = parsedData["stats"][0]["base_stat"]
         console.log(bulbStats)
-    })
+    });
+
+
 }
 
 document.addEventListener("DOMContentLoaded", async () => whoThatPokemon());
