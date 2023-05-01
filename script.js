@@ -4,58 +4,106 @@ function findThatPokemon(pokemon) {
     return getFrom;
 }
 
-function formChart(statArr) {
-    window.onload = function () {
-        var chart = new CanvasJS.Chart("chart", {
-            title:{
-                text: "Stat Spread"              
-            },
-            data: [              
-            {
-                type: "column",
-                dataPoints: [
-                    {label: "HP", y: 0  },
-                    { label: "Atk",  y: 0  },
-                    { label: "Def", y: 0  },
-                    { label: "SpAtk", y: 0  },
-                    { label: "SpDef",  y: 0  },
-                    { label: "Spd",  y: 0  }
-                ]
-            }
+let search = "";
+
+const pokemon = document.querySelector('#poke');
+
+pokemon.addEventListener("input", async (event) => {
+    //console.log("input",event.target.value)
+    pocketMonsterLink = findThatPokemon(event.target.value);
+    search = pocketMonsterLink;
+    console.log(search)
+});
+
+window.onload = function formChart() {
+    var chart = new CanvasJS.Chart("chart", {
+        title:{
+            text: "Stat Spread"              
+        },
+        data: [              
+        {
+            type: "column",
+            dataPoints: [
+                {label: "HP", y: 0  },
+                { label: "Atk",  y: 0  },
+                { label: "Def", y: 0  },
+                { label: "SpAtk", y: 0  },
+                { label: "SpDef",  y: 0  },
+                { label: "Spd",  y: 0  }
             ]
-        });
-        console.log(chart.options)
-        chart.render();
+        }
+        ]
+    });
+    chart.render();
 
-        $("#example").click(function () {
-
-            chart.options.title.text = "Bulbasaur Base Stats";
-            chart.options.data[0].dataPoints[0].y = 45;
-            chart.options.data[0].dataPoints[1].y = 49;
-            chart.options.data[0].dataPoints[2].y = 49;
-            chart.options.data[0].dataPoints[3].y = 65;
-            chart.options.data[0].dataPoints[4].y = 65;
-            chart.options.data[0].dataPoints[5].y = 45;
-            chart.render();
-        
+    $("#example").click(function () {
+        $.get("https://pokeapi.co/api/v2/pokemon/bulbasaur", function (data) {
+            var chart = new CanvasJS.Chart("chart", {
+                animationEnabled: true,
+                theme: "light2",//light1
+                title: {
+                    text: data["name"] + " base stats"
+                },
+                data: [
+                  {
+                    type: "column",
+                    dataPoints: [
+                    {label: "HP", y: data["stats"][0]["base_stat"]  },
+                    { label: "Atk",  y: data["stats"][1]["base_stat"]  },
+                    { label: "Def", y: data["stats"][2]["base_stat"]  },
+                    { label: "SpAtk", y: data["stats"][3]["base_stat"]  },
+                    { label: "SpDef",  y: data["stats"][4]["base_stat"]  },
+                    { label: "Spd",  y: data["stats"][5]["base_stat"]  }
+                    ]
+                  }
+                ]
             });
+         
+            chart.render();
+        });
+    });
 
-    
+    $("#poke_search").click(function () {
+        $.get(search, function (data) {
+            var chart = new CanvasJS.Chart("chart", {
+                animationEnabled: true,
+                theme: "light2",//light1
+                title: {
+                    text: data["name"] + " base stats"
+                },
+                data: [
+                  {
+                    type: "column",
+                    dataPoints: [
+                    {label: "HP", y: data["stats"][0]["base_stat"]  },
+                    { label: "Atk",  y: data["stats"][1]["base_stat"]  },
+                    { label: "Def", y: data["stats"][2]["base_stat"]  },
+                    { label: "SpAtk", y: data["stats"][3]["base_stat"]  },
+                    { label: "SpDef",  y: data["stats"][4]["base_stat"]  },
+                    { label: "Spd",  y: data["stats"][5]["base_stat"]  }
+                    ]
+                  }
+                ]
+            });
+         
+            console.log(data)
+            chart.render();
+        });
+    });
     }
-}
 
 
 async function whoThatPokemon() {
     const bulbasaurExample = document.querySelector('#example')
     const getStatsButton = document.querySelector('#poke_search')
-    const pokemon = document.querySelector('#poke');
 
     const storedData = localStorage.getItem('storedData');
     let parsedData = JSON.parse(storedData);
 
-    initChart = formChart()
-
     let search = "";
+    let stats = [];
+
+    window.onload
 
     bulbasaurExample.addEventListener("click", async (event) => {
         console.log("Bulbasaur Data")
@@ -69,12 +117,6 @@ async function whoThatPokemon() {
         console.log(bulbStats)
     });
 
-    pokemon.addEventListener("input", async (event) => {
-        console.log("input",event.target.value)
-        pocketMonsterLink = findThatPokemon(event.target.value);
-        search = pocketMonsterLink;
-    });
-
     getStatsButton.addEventListener("click", async (event) => {
         console.log("Getting Stats")
         const results = await fetch(search);
@@ -84,7 +126,6 @@ async function whoThatPokemon() {
         parsedData = storedList;
 
         stats = parsedData
-        console.log(stats)
     });
 
 
