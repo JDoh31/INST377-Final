@@ -90,12 +90,36 @@ window.onload = function formChart() {
             chart.render();
         });
     });
+
+    $("#clear").click(function () {
+        var chart = new CanvasJS.Chart("chart", {
+            title:{
+                text: "Stat Spread"              
+            },
+            data: [              
+            {
+                type: "column",
+                dataPoints: [
+                    {label: "HP", y: 0  },
+                    { label: "Atk",  y: 0  },
+                    { label: "Def", y: 0  },
+                    { label: "SpAtk", y: 0  },
+                    { label: "SpDef",  y: 0  },
+                    { label: "Spd",  y: 0  }
+                ]
+            }
+            ]
+        });
+
+        chart.render();
+    });
     }
 
 
 async function whoThatPokemon() {
     const bulbasaurExample = document.querySelector('#example')
     const getStatsButton = document.querySelector('#poke_search')
+    const clearButton = document.querySelector('#clear')
 
     const storedData = localStorage.getItem('storedData');
     let parsedData = JSON.parse(storedData);
@@ -126,6 +150,10 @@ async function whoThatPokemon() {
         parsedData = storedList;
 
         stats = parsedData
+    });
+
+    clearButton.addEventListener("click", async (event) => {
+        localStorage.clear();
     });
 
 
