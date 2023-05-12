@@ -9,10 +9,8 @@ let search = "";
 const pokemon = document.querySelector('#poke');
 
 pokemon.addEventListener("input", async (event) => {
-    //console.log("input",event.target.value)
     pocketMonsterLink = findThatPokemon(event.target.value);
     search = pocketMonsterLink;
-    console.log(search)
 });
 
 window.onload = function formChart() {
@@ -86,7 +84,6 @@ window.onload = function formChart() {
                 ]
             });
          
-            console.log(data)
             chart.render();
         });
     });
@@ -125,7 +122,6 @@ async function whoThatPokemon() {
     let parsedData = JSON.parse(storedData);
 
     let search = "";
-    let stats = [];
 
     window.onload
 
@@ -146,7 +142,6 @@ async function whoThatPokemon() {
         const storedList = await results.json();
         localStorage.setItem('storedData', JSON.stringify(storedList));
         parsedData = storedList;
-
     });
 
     clearButton.addEventListener("click", async (event) => {
