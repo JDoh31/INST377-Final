@@ -137,8 +137,6 @@ async function whoThatPokemon() {
         localStorage.setItem('storedData', JSON.stringify(storedList));
         parsedData = storedList;
 
-        bulbStats = parsedData["stats"]
-        console.log(bulbStats)
     });
 
     getStatsButton.addEventListener("click", async (event) => {
@@ -149,7 +147,6 @@ async function whoThatPokemon() {
         localStorage.setItem('storedData', JSON.stringify(storedList));
         parsedData = storedList;
 
-        stats = parsedData
     });
 
     clearButton.addEventListener("click", async (event) => {
