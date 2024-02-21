@@ -15,7 +15,7 @@ Project Description:
   
   CSS: Flexbox
   
-  Aim: To display the base stats of any pokemon the user wishes for at a fast rate. As long as the Pokemon is official and in the API, it should work.
+  Aim: To display the base stats of any pokemon the user wishes to see as a barchart at a fast rate. As long as the Pokemon is official and in the API, it should work.
 
 
 The Stats to be observed:
