@@ -1,15 +1,17 @@
 # INST377-Final
 https://jdoh31.github.io/INST377-Final/
 Title: Pokemon Stat Observer
-Target Browsers: All, I guess? (iOS, Android, etc.)
+Target Browsers: iOS, Android, etc.
 
 Project Description: 
-API Used: Pokeapi link:https://pokeapi.co/api/v2/pokemon/
+API Used: Pokeapi 
+  link:https://pokeapi.co/api/v2/pokemon/
 Visualizations: CanvasJS
 CSS: Flexbox
-Aim: to display pokemon base stats at a fast rate for those who need it whenever they like
+Aim: To display the base stats of any pokemon the user wishes for at a fast rate. As long as the pokemon is official
 
-HP = Hit Points/ Health Points
+The Stats to be observed:
+HP = Hit Points/Health Points
 Atk = Attack
 Def = Defence
 SpAtk = Special Attack
