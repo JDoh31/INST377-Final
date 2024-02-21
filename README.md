@@ -9,7 +9,7 @@ Project Description:
 
   API Used: Pokeapi 
   
-    link:https://pokeapi.co/api/v2/pokemon/  
+  API link: https://pokeapi.co/api/v2/pokemon/  
     
   Visualizations: CanvasJS
   
