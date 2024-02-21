@@ -5,18 +5,12 @@ Title: Pokemon Stat Observer
 
 Target Browsers: iOS, Android, etc.
 
-
 Project Description: 
-
-API Used: Pokeapi 
-
-  link:https://pokeapi.co/api/v2/pokemon/
-  
-Visualizations: CanvasJS
-
-CSS: Flexbox
-
-Aim: To display the base stats of any pokemon the user wishes for at a fast rate. As long as the pokemon is official
+  API Used: Pokeapi 
+    link:https://pokeapi.co/api/v2/pokemon/  
+  Visualizations: CanvasJS
+  CSS: Flexbox
+  Aim: To display the base stats of any pokemon the user wishes for at a fast rate. As long as the Pokemon is official and in the API, it should work.
 
 
 The Stats to be observed:
