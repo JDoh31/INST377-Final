@@ -15,6 +15,7 @@ pokemon.addEventListener("input", async (event) => {
 
 window.onload = function formChart() {
     var chart = new CanvasJS.Chart("chart", {
+        backgroundColor: "transparent",
         title:{
             text: "Stat Spread"              
         },
@@ -38,7 +39,7 @@ window.onload = function formChart() {
         $.get("https://pokeapi.co/api/v2/pokemon/bulbasaur", function (data) {
             var chart = new CanvasJS.Chart("chart", {
                 animationEnabled: true,
-                theme: "light2",//light1
+                backgroundColor: "transparent",
                 title: {
                     text: data["name"] + " base stats"
                 },
@@ -65,7 +66,7 @@ window.onload = function formChart() {
         $.get(search, function (data) {
             var chart = new CanvasJS.Chart("chart", {
                 animationEnabled: true,
-                theme: "light2",//light1
+                backgroundColor: "transparent",
                 title: {
                     text: data["name"] + " base stats"
                 },
@@ -90,6 +91,7 @@ window.onload = function formChart() {
 
     $("#clear").click(function () {
         var chart = new CanvasJS.Chart("chart", {
+            backgroundColor: "transparent",
             title:{
                 text: "Stat Spread"              
             },
